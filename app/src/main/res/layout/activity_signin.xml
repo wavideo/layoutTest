@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/gradient_background">
+    <!-- [backgorund] @drawable에 만들어 둔 그라디언트 적용 -->
+
+    <ImageView
+        android:id="@+id/iv_title"
+        android:clickable="true"
+        android:layout_width="191dp"
+        android:layout_height="189dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_foreground"
+        app:tint="@color/mainColor" />
+        <!-- [tint] 색 채우기 기능 / @color에 컬러칩 저장해서 사용 -->
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_title"
+        android:layout_marginTop="-70dp"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:text="@string/app_name"
+        android:textColor="@color/mainColor" />
+    <!-- @string에 텍스트 저장해서 사용 -->
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        android:layout_marginTop="32dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:gravity="start|left"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_corner_background_stroke">
+        <!-- 세로정렬 리니어 레이아웃 / @drawable에 라운딩+스트로크 효과 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!-- 가로정렬 리니어 레이아웃 -->
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:gravity="left"
+                android:text="@string/id"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_id"
+                android:inputType="text"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="18dp"
+
+                android:singleLine="true"
+                android:background="@drawable/empty_background"
+                android:hint="@string/signin_id"
+                android:textColorHint="@color/disabled_black" />
+                <!-- 싱글라인 / empty 백그라운드로 "밑줄 효과 삭제" / 힌트 -->
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:src="@color/disabled_black" />
+            <!-- [이미지뷰]로 1dp 길이의 '선' 구현 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:gravity="left"
+                android:text="@string/pw"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_pw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:padding="18dp"
+                android:background="@drawable/empty_background"
+                android:singleLine="true"
+                android:hint="@string/signin_pw"
+                android:textColorHint="@color/disabled_black"
+                android:inputType="textPassword" />
+                <!-- inputType = 패스워드. ***로 표시 -->
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_signin"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_corner_background_stroke"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/signin_signin"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/disabled_black"
+        android:clickable="false" />
+    <!--"테마" 이슈로 백그라운드 tint 조정 불가능 !!-->
+    <!-- themes > Material3를 AppCompat으로 변경하여 해결함 -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_signin"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="아직 계정이 없으신가요?"
+            android:textColor="@color/disabled_black"
+            android:textSize="15sp"
+            android:layout_marginEnd="15dp"/>
+        <Button
+            android:id="@+id/btn_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="@string/signup"
+            android:textColor="@color/mainColor"
+            android:textStyle="bold"
+            android:textSize="17sp"
+
+            android:background="@drawable/empty_background" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
